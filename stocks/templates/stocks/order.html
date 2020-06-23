@@ -2,7 +2,12 @@
 {% block content %}
 
     <h1>Home</h1>
-
+    <form action="" method="post">
+	{% csrf_token %}
+	{{form}}
+	<input type="submit">
+	
+</form>
 <!-- {% for post in posts %} -->
 <!-- <article class="media content-section">
     <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
