@@ -1,0 +1,67 @@
+{% extends 'stocks/base.html' %}
+{% block content %}
+
+<h2>All Orders</h2>
+<table>
+    <tr>
+        <th>OrderId</th>
+        <th>Trade Type</th>
+        <th>Quantity</th>
+        <th>Stock Code</th>
+        <th>CustomerId</th>
+        <th>Placed On</th>
+        <th>Status</th>
+        <th>Price</th>
+    </tr>
+    
+    {% for order in order_book %}
+        <tr>
+            <td>{{order.order_id}}</td>
+            <td>{{order.trade_type}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.stock_code}}</td>
+            <td>{{order.customer_id}}</td>
+            <td>{{order.placed_on}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.stock_price}}</td>
+        </tr>
+    {% endfor %}
+    </tr>
+    
+</table>
+
+<br>
+
+
+<h2>Matched Orders</h2>
+<table>
+    <tr>
+        <th>TradeId</th>
+        <th>BuyerId</th>
+        <th>SellerId</th>
+        <th>BuyerOrderId</th>
+        <th>SellerOrderId</th>
+        <th>Quantity</th>
+        <th>Stock Code</th>
+        <th>Final Price</th>
+        <th>Trade Date</th>
+    </tr>
+
+    {% for order in matched_orders %}
+    <tr>
+        <td>{{order.trade_id}}</td>
+        <td>{{order.buyer_id}}</td>
+        <td>{{order.seller_id}}</td>
+        <td>{{order.buyer_order_id}}</td>
+        <td>{{order.seller_order_id}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.stock_code}}</td>
+        <td>{{order.final_price}}</td>
+        <td>{{order.trade_date}}</td>
+    </tr>
+    {% endfor %}
+    </tr>
+
+</table>
+
+{% endblock content %}

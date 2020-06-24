@@ -23,6 +23,7 @@ stock_choices=(
 class Order(models.Model):
     id=models.CharField(max_length=15,primary_key=True)
     stock_type = models.CharField(max_length=255, default="", choices=stock_choices)
+    price=models.FloatField(default=0)
     quantity=models.IntegerField(default=0)
     order_type=models.CharField(max_length=255, choices=choices)
 

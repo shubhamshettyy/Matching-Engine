@@ -4,5 +4,7 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ['id', 'stock_type', 'quantity', 'order_type']
+        # widgets = {'price': forms.HiddenInput()}
+        exclude= ['price']
         

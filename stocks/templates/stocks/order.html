@@ -1,24 +1,12 @@
 {% extends 'stocks/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-
-    <h1>Home</h1>
+    <h2>Place Order</h2>
     <form action="" method="post">
 	{% csrf_token %}
-	{{form}}
+    {{form|crispy}}
+    <br><br><br>
 	<input type="submit">
 	
-</form>
-<!-- {% for post in posts %} -->
-<!-- <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-        </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
-    </div>
-</article> -->
-<!-- {% endfor %} -->
+    </form>
 {% endblock content %}
