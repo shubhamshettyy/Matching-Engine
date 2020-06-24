@@ -1,10 +1,12 @@
 from django.db import models
+# from django.utils import timezone
+from datetime import datetime
 
 # Create your models here.
 
 choices=(
     ("Bid", "Bid"),
-    ("Sell","Sell")
+    ("Ask","Ask")
 )
 
 stock_choices=(
@@ -26,6 +28,7 @@ class Order(models.Model):
     price=models.FloatField(default=0)
     quantity=models.IntegerField(default=0)
     order_type=models.CharField(max_length=255, choices=choices)
+    placed_on = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return self.id

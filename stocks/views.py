@@ -74,13 +74,13 @@ def generate_id(length):
     return rand_str
 
 
-def make_order(cust_id, trade_type, quantity, stock_code, stockprice):
+def make_order(cust_id, trade_type, quantity, stock_code, stockprice,placed_on):
     order = {"order_id": generate_id(7),
              "trade_type": trade_type,
              "quantity": quantity,
              "stock_code": stock_code,
              "customer_id": cust_id,
-             "placed_on": str(datetime.now()),
+             "placed_on": placed_on,
              "status": "Pending",
              "stock_price": stockprice
              }
@@ -178,7 +178,7 @@ def trades(request):
     order_book = []
     orders_from_db = Order.objects.all()
     for o in orders_from_db:
-        order = make_order(o.id, o.order_type, o.quantity, o.stock_type, o.price)
+        order = make_order(o.id, o.order_type, o.quantity, o.stock_type, o.price,o.placed_on)
         buy_orders, sell_orders, matched_orders,order_book = matching_algo(
             buy_orders, sell_orders, matched_orders, order, order_book)
 
