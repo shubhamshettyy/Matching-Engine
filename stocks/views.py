@@ -132,6 +132,7 @@ def matching_algo(buy_orders, sell_orders, matched_orders, order,order_book):
                                       sell_order["stock_price"]*order["quantity"])
                 order["status"] = "Completed"
                 sell_order["quantity"] -= order["quantity"]
+                order["quantity"] = 0;
                 if(sell_order["quantity"] == 0):
                     order_book[order_book.index(sell_order)]["status"] = "Completed"
                     sell_orders.remove(sell_order)
@@ -152,6 +153,7 @@ def matching_algo(buy_orders, sell_orders, matched_orders, order,order_book):
                                         buy_order["stock_price"]*order["quantity"])
                 order["status"] = "Completed"
                 buy_order["quantity"] -= order["quantity"]
+                order["quantity"] = 0;
                 if(buy_order["quantity"] == 0):
                     order_book[order_book.index(buy_order)]["status"] = "Completed"
                     buy_orders.remove(buy_order)
